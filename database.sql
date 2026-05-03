@@ -38,3 +38,13 @@ CREATE TABLE IF NOT EXISTS reviews (
     FOREIGN KEY (reviewed_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (skill_id) REFERENCES skills(id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS notifications (
+    id           INT AUTO_INCREMENT PRIMARY KEY,
+    user_id      INT NOT NULL,
+    message      VARCHAR(255) NOT NULL,
+    link         VARCHAR(255),
+    is_read      TINYINT DEFAULT 0,
+    created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
