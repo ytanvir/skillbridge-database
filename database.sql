@@ -24,3 +24,17 @@ CREATE TABLE IF NOT EXISTS requests (
     FOREIGN KEY (skill_id)  REFERENCES skills(id) ON DELETE CASCADE,
     FOREIGN KEY (sender_id) REFERENCES users(id)  ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS reviews (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    reviewer_id INT NOT NULL,
+    reviewed_id INT NOT NULL,
+    skill_id INT NOT NULL,
+    rating TINYINT NOT NULL,
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (reviewer_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (reviewed_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (skill_id) REFERENCES skills(id) ON DELETE CASCADE
+);
