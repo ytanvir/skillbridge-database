@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS skills (
     skill_type   ENUM('offer','request') DEFAULT 'offer',
     status       ENUM('active','closed') DEFAULT 'active',
     views        INT DEFAULT 0,
+   );
 
 
 -- Interest / Connection Requests
